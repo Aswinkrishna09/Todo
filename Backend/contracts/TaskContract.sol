@@ -10,7 +10,7 @@ contract TaskContract {
         uint256 priority;
         bool isDeleted;
     }
-    mapping(address => Task[]) allTasks;
+    mapping(address => Task[]) public allTasks;
 
     function addTask(string memory _taskText, bool _isDeleted) external {
         allTasks[msg.sender].push(
@@ -31,7 +31,7 @@ contract TaskContract {
         public
     {
         for (uint256 i = 0; i < id.length; i++) {
-             allTasks[msg.sender][id[i]] = allTasks[msg.sender][_priority[i]] ;
+             allTasks[msg.sender][id[i]-1] = allTasks[msg.sender][_priority[i]-1] ;
         }
     }
 
